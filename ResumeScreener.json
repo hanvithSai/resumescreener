@@ -687,9 +687,9 @@
     },
     {
       "parameters": {
-        "content": "## JD MANAGEMENT WORKFLOW\n\n**Nodes:** Google Drive JD Trigger → Download JD1 → Extract JD Content1 → Append row in sheet\n\n**Purpose:** Maintains a centralized repository of job descriptions for resume evaluation\n\nJob Desc Google Sheet stores : id, name, text, url\n\n**How it works:**\n- Monitors JDs folder for new job descriptions\n- Downloads PDF when new JD is uploaded\n- Extracts text content from PDF\n- Stores in Google Sheets with metadata (id, name, text, url)\n\n**Why needed:** AI Agent requires latest JD text to evaluate resumes accurately\n\n**Without this:** Manual JD updates, outdated evaluations, inconsistent screening criteria\n\n**Optimization:** \n- Automatic extraction eliminates manual copy-paste, ensures single source of truth.\n- Avoids extraction and download of JD for each resume evaluation, reducing compute and latency.",
+        "content": "## JD MANAGEMENT WORKFLOW\n\n**Nodes:** Google Drive JD Trigger → Download JD1 → Extract JD Content1 → Append row in sheet\n\n**Purpose:** Maintains a centralized repository of job descriptions for resume evaluation\n\nJob Desc Google Sheet stores : id, name, text, url\n\n**How it works:**\n- A JD is considered latest based on the last modification field of the document and NOT UPLOADED TO DRIVE TIME\n- Monitors JDs folder for new job descriptions\n- Downloads PDF when new JD is uploaded\n- Extracts text content from PDF\n- Stores in Google Sheets with metadata (id, name, text, url)\n\n**Why needed:** AI Agent requires latest JD text to evaluate resumes accurately\n\n**Without this:** Manual JD updates, outdated evaluations, inconsistent screening criteria\n\n**Optimization:** \n- Automatic extraction eliminates manual copy-paste, ensures single source of truth.\n- Avoids extraction and download of JD for each resume evaluation, reducing compute and latency.",
         "height": 472,
-        "width": 686
+        "width": 862
       },
       "id": "3bff47c7-e910-4e5a-a9fe-32e1adccd42d",
       "name": "Note: JD Management Workflow",
@@ -795,6 +795,22 @@
       "typeVersion": 1,
       "id": "56c41f1e-35f1-4153-bd37-78d24d799e39",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Future Enhancements, Safety & Advanced Automation\n\n### **Pre-AI Brute-Force Relevance Gate (Cost & Safety Critical)**\n- Apply a **strict deterministic keyword-overlap check** between the Job Description and Resume before invoking AI.  \n- Filter out resumes with **zero or negligible overlap** in mandatory skills, technologies, or domain terms.  \n- Prevents random and irrelevant applications from consuming AI resources while keeping thresholds conservative to avoid false rejections.\n\n---\n\n### Post-Filter Candidate Validation & Enrichment\n- After passing initial filtering, optionally validate profiles using **public professional presence** (LinkedIn, GitHub, portfolios, personal websites).  \n- Cross-check claimed skills and experience; flag inconsistencies for recruiter review (no auto-rejection).\n\n---\n\n### Interview Scheduling Automation\n- Once a recruiter approves a candidate, **automatically analyze recruiter calendar availability** (Google Calendar).  \n- Identify common free slots and generate **proposed interview time windows**.  \n- Email the candidate with selectable time options and confirm the meeting upon response.  \n- Reduces back-and-forth communication and accelerates time-to-interview.\n\n---\n\n### Additional Enhancements & Edge Cases\n- Configurable scoring weights per role (mandatory vs preferred skills)  \n- Recruiter feedback loop to continuously refine evaluations  \n- OCR confidence handling for scanned resumes  \n- Flags for overqualified candidates and keyword stuffing  \n- JD versioning with optional re-evaluation of past candidates  \n\n### These enhancements extend the system from screening to **end-to-end hiring orchestration**, combining safe AI usage, deterministic filtering, and calendar-driven automation to improve recruiter efficiency, candidate experience, and hiring velocity.\n",
+        "height": 736,
+        "width": 1952,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2416,
+        1632
+      ],
+      "typeVersion": 1,
+      "id": "a1174647-8731-4bbf-823e-e8ba51286fa5",
+      "name": "Sticky Note1"
     }
   ],
   "pinData": {},
@@ -1032,7 +1048,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "baa763d8-2721-434a-85bd-1c1d07482e14",
+  "versionId": "4512169c-52f5-4057-bb9e-4292335f579a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c9a5f13a2abdc6c9c39000c85628df9db9e1151ac842ff7904e73aee5c9f88a0"
